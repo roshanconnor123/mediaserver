@@ -29,7 +29,7 @@ mount() {
   echo "Provide your remote name you configured in rclone\n"
   read remote
   sudo rclone mount "$remote": /mnt/media --allow-other --allow-non-empty --vfs-cache-mode writes &
-  echo "${BLUE}Your Drive is succesfully mounted at /mnt/media${NORMAL}"
+}  
 # ★★★Installation of Plex★★★
 plex () {
   sudo apt-get update
@@ -100,5 +100,4 @@ case "$option" in
     echo
     echo " ${RED}Choose Correct Number from the Options${NORMAL}"
     ;;
-esac 
-  
+esac
