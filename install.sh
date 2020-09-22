@@ -29,6 +29,16 @@ mount() {
   echo "Provide your remote name you configured in rclone\n"
   read remote
   sudo rclone mount "$remote": /mnt/media --allow-other --allow-non-empty --vfs-cache-mode writes &
+}
+# ★★★cronjob for rclone mount★★★
+cron() {
+  echo "Provide your remote name you configured in rclone\n"
+  read remote
+  crontab -l > mycron
+  echo "@reboot sudo rclone mount "$remote": /mnt/media --allow-other --allow-non-empty --vfs-cache-mode writes &" >> mycron
+  #install new cron file
+  crontab mycron
+  rm mycron
 }  
 # ★★★Installation of Plex★★★
 plex () {
@@ -81,18 +91,21 @@ case "$option" in
 1)
     rclone
 	mount
+	cron
 	plex
 	;;
 2)
     rclone
     mount
+	cron
     emby
 	;;
 3)
     rclone
     mount
+	cron
     jellyfin	
-    ;;
+    ;;	
 69)
     exit
     ;;
@@ -100,4 +113,5 @@ case "$option" in
     echo
     echo " ${RED}Choose Correct Number from the Options${NORMAL}"
     ;;
-esac
+esac 
+  
