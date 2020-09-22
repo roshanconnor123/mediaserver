@@ -44,7 +44,7 @@ plex () {
   sudo systemctl enable plexmediaserver.service
   sudo systemctl start plexmediaserver.service
   echo "${BLUE}Plex has been Installed succesfully${NORMAL}"
-  echo "${RED}Go to ip.adress.of.server:32400 in your browser now${MORMAL}"
+  echo "${RED}Go to ip.adress.of.server:32400 in your browser now${NORMAL}"
 }
 # ★★★Installation of Emby★★★
 emby() {
@@ -54,7 +54,7 @@ emby() {
   sudo dpkg -i emby-server-*.deb
   sudo service emby-server start
   echo "${BLUE}Emby has been Installed succesfully${NORMAL}"
-  echo "${RED}Go to ip.adress.of.server:8096 in your browser now${MORMAL}"
+  echo "${RED}Go to ip.adress.of.server:8096 in your browser now${NORMAL}"
 }
 # ★★★Installation of Jellyfin★★★
 jellyfin() {
@@ -69,7 +69,7 @@ jellyfin() {
   sudo apt install jellyfin
   sudo systemctl start jellyfin.service
   echo "${BLUE}Jellyfin has been Installed succesfully${NORMAL}"
-  echo "${RED}Go to ip.adress.of.server:8096 in your browser now${MORMAL}"
+  echo "${RED}Go to ip.adress.of.server:8096 in your browser now${NORMAL}"
 }
 
 # ★★★Installation★★★
