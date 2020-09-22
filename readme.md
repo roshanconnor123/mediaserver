@@ -12,7 +12,7 @@ Setup Includes:  Plex, Emby, Jelyfin - with Rclone Mount
 ```
 git clone https://github.com/roshanconnor123/mediaserver && sh mediaserver/install.sh
 ```
-![mediaserver]https://i.ibb.co/ygKr9gG/Screenshot-1041.png
+![mediaserver](https://i.ibb.co/ygKr9gG/Screenshot-1041.png)
 - Choose Media server of you choice..Setup a new Rclone remote when it asks you to
 - Once everything is done..Open Browser in your Computer (The Computer in which you are using your SSH client)
 - Go to http://server.local.ip.address:32400/web - For Plex
