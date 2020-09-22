@@ -29,17 +29,12 @@ mount() {
   echo "Provide your remote name you configured in rclone\n"
   read remote
   sudo rclone mount "$remote": /mnt/media --allow-other --allow-non-empty --vfs-cache-mode writes &
-}
-# ★★★cronjob for rclone mount★★★
-cron() {
-  echo "Provide your remote name you configured in rclone\n"
-  read remote
   crontab -l > mycron
   echo "@reboot sudo rclone mount "$remote": /mnt/media --allow-other --allow-non-empty --vfs-cache-mode writes &" >> mycron
   #install new cron file
   crontab mycron
   rm mycron
-}  
+} 
 # ★★★Installation of Plex★★★
 plex () {
   sudo apt-get update
@@ -72,6 +67,7 @@ jellyfin() {
   echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/ubuntu $( lsb_release -c -s ) main" | sudo tee /etc/apt/sources.list.d/jellyfin.list
   sudo apt update
   sudo apt install jellyfin
+  sudo systemctl start jellyfin.service
   echo "${BLUE}Jellyfin has been Installed succesfully${NORMAL}"
   echo "${RED}Go to ip.adress.of.server:8096 in your browser now${MORMAL}"
 }
@@ -80,9 +76,9 @@ jellyfin() {
 echo && echo " ${BLUE}Media Server Installation Srcipt${NORMAL} by ${RED}Roshanconnor${NORMAL}
 
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
-1.${GREEN}Installation Of Plex with Gdrive${NORMAL}
-2.${GREEN}Installation Of Emby with Gdrive${NORMAL}
-3.${GREEN}Installation Of Jellyfin with Gdrive${NORMAL}
+1.${GREEN}Setting Up Plex with Gdrive${NORMAL}
+2.${GREEN}Setting Up Emby with Gdrive${NORMAL}
+3.${GREEN}Setting Up Jellyfin with Gdrive${NORMAL}
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 69.${PURPLE}Exit${NORMAL}" && echo
 read -p " Choose any Number [1-3]:" option
@@ -90,20 +86,17 @@ read -p " Choose any Number [1-3]:" option
 case "$option" in
 1)
     rclone
-	mount
-	cron
-	plex
-	;;
+    mount
+    plex
+    ;;
 2)
     rclone
     mount
-	cron
     emby
-	;;
+    ;;
 3)
     rclone
     mount
-	cron
     jellyfin	
     ;;	
 69)
